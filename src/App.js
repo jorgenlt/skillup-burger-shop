@@ -34,11 +34,15 @@ function App() {
   const [vegCheeseBurger, setVegCheeseBurger] = useState(0);
   const [cheeseBurgerFries, setCheeseBurgerFries] = useState(0);
   const [total, setTotal] = useState(0);
+  const [orders, setOrders] = useState([
+    {cheeseBurger: 1, total: 400}
+  ]);
 
   const increment = item => {
     switch (item) {
       case 'cheeseBurger':
         setCheeseBurger(prev => prev + 1)
+        console.log(`cheeseburger incremented to ${cheeseBurger + 1}`);
         break;
       case 'vegCheeseBurger':
         setVegCheeseBurger(prev => prev + 1)
@@ -78,12 +82,28 @@ function App() {
 
   }, [cheeseBurger, vegCheeseBurger, cheeseBurgerFries])
 
+  const addOrder = () => {
+    setOrders(prev => [
+      ...prev,
+      {
+        cheeseBurger: cheeseBurger,
+        vegCheeseBurger: vegCheeseBurger,
+        cheeseBurgerFries: cheeseBurgerFries,
+        total: total
+      }
+    ]);
+  }
 
   return (
     <Router>
       <Header isAuthenticated={true} />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={
+            <Home 
+              increment={increment}
+            />
+          } 
+        />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/cart" element={
@@ -94,6 +114,7 @@ function App() {
             vegCheeseBurger={vegCheeseBurger}
             cheeseBurgerFries={cheeseBurgerFries}
             total={total}
+            addOrder={addOrder}
           />
         } 
         />

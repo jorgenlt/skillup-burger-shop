@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Founder from "./Founder";
 import Menu from "./Menu";
 
-const Home = () => {
+const Home = ({ increment }) => {
   const options = {
     initial: {
       x: "-100%",
@@ -45,7 +45,9 @@ const Home = () => {
         Explore Menu
         </motion.a>
       </section>
-      <Menu />
+      <Menu 
+        increment={increment}
+      />
       <Founder />
     </>
   );

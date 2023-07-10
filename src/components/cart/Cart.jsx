@@ -19,7 +19,7 @@ const CartItem = ({ value, title, img, increment, decrement }) => (
   </div> 
 ); 
   
-const Cart = ({ increment, decrement, cheeseBurger, vegCheeseBurger, cheeseBurgerFries, total }) => { 
+const Cart = ({ increment, decrement, addOrder, cheeseBurger, vegCheeseBurger, cheeseBurgerFries, total }) => { 
 
   return ( 
     <section className="cart"> 
@@ -62,7 +62,15 @@ const Cart = ({ increment, decrement, cheeseBurger, vegCheeseBurger, cheeseBurge
             <h4>Total</h4> 
             <p>₹{total * 1.18 + 200}</p> 
           </div> 
-          <Link to="/shipping">Checkout</Link> 
+          <Link 
+            to="/shipping"
+            onClick={() => {
+              addOrder();
+              console.log('checkout was clicked');
+            }}
+          >
+            Checkout
+          </Link> 
         </article> 
       </main> 
     </section> 
