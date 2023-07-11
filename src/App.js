@@ -14,7 +14,6 @@ import MyOrders from './components/myOrders/MyOrders'
 import OrderDetails from "./components/myOrders/OrderDetails";
 import About from "./components/about/About";
 
-
 import "./styles/app.scss";
 import "./styles/header.scss";
 import "./styles/home.scss";
@@ -30,13 +29,15 @@ import "./styles/table.scss";
 import "./styles/orderDetails.scss";
 import "./styles/about.scss";
 
-function App() {
+const App = () => {
+  // State variables
   const [cheeseBurger, setCheeseBurger] = useState(0);
   const [vegCheeseBurger, setVegCheeseBurger] = useState(0);
   const [cheeseBurgerFries, setCheeseBurgerFries] = useState(0);
   const [total, setTotal] = useState(0);
   const [orders, setOrders] = useState([]);
 
+  // Function to increment the quantity of an item
   const increment = item => {
     switch (item) {
       case 'cheeseBurger':
@@ -53,6 +54,7 @@ function App() {
     }
   }
 
+  // Function to decrement the quantity of an item
   const decrement = item => {
     switch (item) {
       case 'cheeseBurger':
@@ -69,6 +71,7 @@ function App() {
     }
   }
 
+  // Calculating the total amount and updating the state variable
   useEffect(() => {
     const cheeseBurgerTotal = 9 * cheeseBurger;
     const vegCheeseBurgerTotal = 11 * vegCheeseBurger;
@@ -80,6 +83,7 @@ function App() {
 
   }, [cheeseBurger, vegCheeseBurger, cheeseBurgerFries])
 
+  // Adding an order to the list of orders
   const addOrder = shippingDetails => {
     const {
       name,
@@ -118,6 +122,7 @@ function App() {
     setTotal(0);
   }
 
+  // Retrieving saved orders from local storage
   useEffect(() => {
     const storedOrdersString = localStorage.getItem('orders');
     const storedOrders = JSON.parse(storedOrdersString);
@@ -179,7 +184,6 @@ function App() {
             } 
         />
       </Routes>
-
       <Footer />
     </Router>
   );

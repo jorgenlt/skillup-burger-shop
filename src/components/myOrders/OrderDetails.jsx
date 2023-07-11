@@ -123,8 +123,6 @@ const OrderDetails = ({ orders }) => {
               <span>€ {Number(4).toFixed(2)}</span> 
             </div> 
           </div> 
-          
-          
           <div> 
             <h4 
               style={{ 

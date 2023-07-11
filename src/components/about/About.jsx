@@ -10,7 +10,7 @@ const About = () => {
         <h1>About Us</h1> 
         
         <article> 
-          <h4>Burger Shop</h4> 
+          <h2>Burger Shop</h2> 
           <p> 
             This is Burger Shop. The place for most tasty burgers on the 
             enitre earth. 

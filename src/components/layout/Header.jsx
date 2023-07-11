@@ -12,7 +12,6 @@ const Header = ({ isAuthenticated = false }) => {
           <IoFastFoodOutline />
         </motion.div> 
       </Link>
-      
       <div> 
         <Link to="/">Home</Link> 
         <Link to="/contact">Contact</Link> 

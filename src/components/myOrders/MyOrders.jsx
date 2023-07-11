@@ -17,7 +17,6 @@ const MyOrders = ({ orders }) => {
               <th>Action</th>
             </tr>
           </thead>
-
           <tbody> 
             {orders && orders.map(order => ( 
             <tr key={order.id}> 
