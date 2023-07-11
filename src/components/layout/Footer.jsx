@@ -7,12 +7,8 @@ const Footer = () => {
       <div> 
         <h2>Burger Shop</h2> 
         
-        <p>We are trying to give you the best taste possible.</p> 
+        <p>The best burger money can get!</p> 
         <br /> 
-        
-        <em>We give attention to genuine feedback.</em> 
-        
-        <strong>All right received @burgershop</strong> 
       </div> 
       
       <aside> 

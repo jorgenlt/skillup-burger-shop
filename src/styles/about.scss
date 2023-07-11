@@ -2,7 +2,7 @@
 
 .about {
   width: 100%;
-  background-color: $pink;
+  background-color: $yellow;
 
   > main {
     background-color: white;
@@ -12,10 +12,10 @@
 
     > h1 {
       font: 500 3rem "Roboto";
-      color: $red;
+      color: $yellow;
       padding: 1rem 2rem;
       text-transform: uppercase;
-      background-color: $dark;
+      background-color: $red;
     }
 
     > article {
@@ -56,12 +56,13 @@
     }
 
     > div {
-      background-color: $dark;
+      background-color: $red;
       padding: 2rem;
       color: white;
       > h2 {
         text-align: center;
         text-transform: uppercase;
+        color: $yellow;
       }
 
       > article {

@@ -18,11 +18,10 @@ const MenuCard = ({ item, burgerSrc, price, title, incrementItem, delay = 0 }) =
         delay,
       }}
     >
-      <div></div>
       <main>
         <img src={burgerSrc} alt={item} />
 
-        <h5>₹{price}</h5>
+        <h5>€ {price}</h5>
 
         <p>{title}</p>
         <Popup trigger=
@@ -34,7 +33,7 @@ const MenuCard = ({ item, burgerSrc, price, title, incrementItem, delay = 0 }) =
             </div>
           }
         >
-          <div style={{color:"red", transform: 'translate(0%,-500%)', backgroundColor: '#fff', padding: '10px', borderRadius: '5px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)'}}>Added to cart!</div>
+          <div style={{color:"red", backgroundColor: '#fff', padding: '10px', borderRadius: '5px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)'}}>Added to cart!</div>
                
         </Popup>
             

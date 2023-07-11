@@ -16,7 +16,7 @@ const Menu = ({ increment }) => {
         <MenuCard 
           item={'cheeseBurger'} 
           burgerSrc={burger1} 
-          price={200} 
+          price={9} 
           title="Cheese Burger" 
           incrementItem={incrementItem}
           delay={0.1}
@@ -24,7 +24,7 @@ const Menu = ({ increment }) => {
         <MenuCard 
           item={'vegCheeseBurger'} 
           burgerSrc={burger2} 
-          price={500} 
+          price={11} 
           title="Veg Cheese Burger" 
           incrementItem={incrementItem}
           delay={0.5} 
@@ -32,7 +32,7 @@ const Menu = ({ increment }) => {
         <MenuCard 
           item={'cheeseBurgerFries'} 
           burgerSrc={burger3} 
-          price={1800} 
+          price={15} 
           title="Cheese Burger with French Fries" 
           incrementItem={incrementItem}
           delay={0.8} 

@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { AiOutlineEye } from "react-icons/ai";
 
 const MyOrders = ({ orders }) => {
-  const arr = [1, 2, 3, 4];
-
   return (
     <section className="tableClass">
       <main>
@@ -21,21 +19,21 @@ const MyOrders = ({ orders }) => {
           </thead>
 
           <tbody> 
-            {orders.map((i) => ( 
-            <tr key={i}> 
-              <td>#sdkfsdfdsf</td> 
+            {orders && orders.map(order => ( 
+            <tr key={order.id}> 
+              <td>{order.id}</td>
               <td>Processing</td> 
-              <td>23</td> 
-              <td>₹{2132}</td> 
-              <td>COD</td> 
+              <td>{order.cheeseBurger + order.vegCheeseBurger + order.cheeseBurgerFries}</td> 
+              <td>€ {order.total}</td> 
+              <td>Card</td> 
               <td> 
-              <Link to={`/order/${"asdsds"}`}> 
+              <Link to={`/order/${order.id}`}> 
                 <AiOutlineEye /> 
               </Link> 
               </td> 
             </tr> 
             ))} 
-          </tbody>;
+          </tbody>
         </table>
       </main>
     </section>

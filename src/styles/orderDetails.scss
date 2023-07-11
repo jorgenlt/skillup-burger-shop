@@ -1,7 +1,7 @@
 @import "colors";
 
 .orderDetails {
-  background-color: $pink;
+  background-color: $yellow;
   width: 100%;
 
   > main {
@@ -10,11 +10,13 @@
     margin: auto;
     padding: 2rem;
     overflow-x: auto;
+    border-radius: 10px;
     > h1 {
       text-transform: uppercase;
       text-align: center;
       font: 100 3rem "Roboto";
       margin: 3rem;
+      color: $red;
     }
 
     > div {
@@ -24,6 +26,7 @@
         font-size: 1.8rem;
         text-transform: uppercase;
         letter-spacing: 5px;
+        color: $red;
       }
 
       > p {
@@ -43,6 +46,7 @@
         text-transform: uppercase;
         letter-spacing: 5px;
         margin: 2rem 0;
+        color: $red;
       }
 
       > div {

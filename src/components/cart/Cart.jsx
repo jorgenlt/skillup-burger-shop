@@ -19,7 +19,7 @@ const CartItem = ({ value, title, img, increment, decrement }) => (
   </div> 
 ); 
   
-const Cart = ({ increment, decrement, addOrder, cheeseBurger, vegCheeseBurger, cheeseBurgerFries, total }) => { 
+const Cart = ({ increment, decrement, cheeseBurger, vegCheeseBurger, cheeseBurgerFries, total }) => { 
 
   return ( 
     <section className="cart"> 
@@ -48,26 +48,22 @@ const Cart = ({ increment, decrement, addOrder, cheeseBurger, vegCheeseBurger, c
         <article> 
           <div> 
             <h4>Sub Total</h4> 
-            <p>₹{total}</p> 
+            <p>€ {Number(total).toFixed(2)}</p> 
           </div> 
           <div> 
             <h4>Tax</h4> 
-            <p>₹{total * 0.18}</p> 
+            <p>€ {Number(total * 0.18).toFixed(2)}</p> 
           </div> 
           <div> 
             <h4>Shipping Charges</h4> 
-            <p>₹{200}</p> 
+            <p>€ {Number(4).toFixed(2)}</p> 
           </div>{" "} 
           <div> 
             <h4>Total</h4> 
-            <p>₹{total * 1.18 + 200}</p> 
+            <p>€ {Number(total * 1.18 + 4).toFixed(2)}</p> 
           </div> 
           <Link 
             to="/shipping"
-            onClick={() => {
-              addOrder();
-              console.log('checkout was clicked');
-            }}
           >
             Checkout
           </Link> 

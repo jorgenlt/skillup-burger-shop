@@ -1,64 +1,122 @@
-import React from "react"; 
-import { State, Country } from "country-state-city"; 
+import React, { useState } from "react"; 
+import { Country } from "country-state-city"; 
 import Popup from "reactjs-popup"; 
 import { Link } from "react-router-dom"; 
 
-const Shipping = () => { 
+const Shipping = ({ addOrder }) => {
+  const [name, setName] = useState('');
+  const [street, setStreet] = useState('');
+  const [houseNo, setHouseNo] = useState('');
+  const [city, setCity] = useState('');
+  const [country, setCountry] = useState('');
+  const [zip, setZip] = useState('');
+  const [phone, setPhone] = useState('');
+
+  const handleOnClick = () => {
+    addOrder({
+      name: name,
+      street: street,
+      houseNo: houseNo,
+      city: city,
+      country: country,
+      zip: zip,
+      phone: phone
+    });
+  }
+
   return ( 
     <section className="shipping"> 
       <main> 
         <h1>Shipping Details</h1> 
         <form> 
           <div> 
-            <label>H.No.</label> 
-            <input type="text" placeholder="Enter House No." /> 
+            <label>Name</label> 
+            <input 
+              type="text" 
+              placeholder="Enter Name"
+              value={name}
+              onChange={e => setName(e.target.value)}
+            /> 
+          </div> 
+          <div> 
+            <label>Street</label> 
+            <input 
+              type="text" 
+              placeholder="Enter Street"
+              value={street}
+              onChange={e => setStreet(e.target.value)}
+            /> 
+          </div> 
+          <div> 
+            <label>House Number</label> 
+            <input 
+              type="text" 
+              placeholder="Enter House No."
+              value={houseNo}
+              onChange={e => setHouseNo(e.target.value)}
+            /> 
           </div> 
           <div> 
             <label>City</label> 
-            <input type="text" placeholder="Enter City" /> 
+            <input 
+              type="text" 
+              placeholder="Enter City" 
+              value={city}
+              onChange={e => setCity(e.target.value)}
+            /> 
           </div> 
           <div> 
             <label>Country</label> 
 
-            <select> 
+            <select
+              onChange={e => {
+                setCountry(e.target.value);
+              }}
+            > 
               <option value="">Country</option> 
                 {
-                  Country && Country.getAllCountries().map((i) => ( 
-                  <option value="{i.isoCode}" key="{i.isoCode}"> 
-                    {i.name} 
-                  </option> 
+                  Country && Country.getAllCountries().map((country) => ( 
+                    <option 
+                      value={country.name} 
+                      key={country.isoCode}
+
+                    > 
+                      {country.name}
+                    </option> 
                   ))
                 } 
             </select> 
             </div>
-          <div> 
-            <label>State</label> 
-            <select> 
-              <option value="">State</option> 
-              {
-                State && 
-                State.getStatesOfCountry("IN").map((i) => ( 
-                  <option value={i.isoCode} key={i.isoCode}> 
-                    {i.name} 
-                  </option> 
-                ))
-              } 
-            </select> 
-          </div> 
-          <div> 
-            <label>Pin Code</label> 
-            <input type="number" placeholder="Enter Pincode" /> 
+          <div>
+            <label>ZIP Code</label> 
+            <input 
+              type="number" 
+              placeholder="Enter ZIP Code" 
+              value={zip}
+              onChange={e => setZip(e.target.value)}
+            /> 
           </div> 
           <div> 
             <label>Phone No.</label> 
-            <input type="number" placeholder="Enter Phone No." /> 
+            <input 
+              type="text" 
+              placeholder="Enter Phone No." 
+              value={phone}
+              onChange={e => setPhone(e.target.value)}
+            /> 
           </div> 
               
-          <Popup 
-            trigger={ 
-              <Link className="link" to="/myorders"> 
-                Confirm Order 
-              </Link> 
+          <Popup
+            trigger={
+              <div>
+                <Link 
+                onClick={handleOnClick}
+                  className="link" 
+                  to="/myorders"
+                > 
+                  Confirm Order 
+                </Link> 
+              </div>
             } 
           > 
             <div 

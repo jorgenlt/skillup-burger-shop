@@ -1,6 +1,30 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
-const OrderDetails = () => { 
+const OrderDetails = ({ orders }) => {
+  const { id } = useParams();
+
+  const order = orders.find(order => order.id === id);
+  
+  if (!order) {
+    return <div>No order found</div>;
+  }
+
+  const {
+    date,
+    cheeseBurger,
+    vegCheeseBurger,
+    cheeseBurgerFries,
+    total,
+    name,
+    street,
+    houseNo,
+    city,
+    country,
+    zip,
+    phone
+  } = order;
+
   return ( 
     <section className="orderDetails"> 
       <main> 
@@ -8,35 +32,35 @@ const OrderDetails = () => {
         <div> 
           <h1>Shipping</h1> 
           <p> 
-          <b>Address</b> 
-            {"sjda 12-32ss dsad"} 
+          <b>Address:</b> 
+            {street} {houseNo}, {zip} {city}, {country}
           </p> 
         </div> 
         <div> 
           <h1>Contact</h1> 
           <p> 
-          <b>Name</b> 
-            {"Stuart"} 
+          <b>Name:</b> 
+            {name} 
           </p> 
           <p> 
-          <b>Phone</b> 
-            {2131232123} 
+          <b>Phone:</b> 
+            {phone} 
           </p> 
         </div> 
         
         <div> 
           <h1>Status</h1> 
           <p> 
-          <b>Order Status</b> 
+          <b>Order Status:</b> 
             {"Processing"} 
           </p> 
           <p> 
-          <b>Placed At</b> 
-            {"23-02-2002"} 
+          <b>Placed At:</b> 
+            {date} 
           </p> 
           <p> 
-          <b>Delivered At</b> 
-            {"23-02-2003"} 
+          <b>Delivered At:</b> 
+            Not yet delivered
           </p> 
         </div> 
         
@@ -44,59 +68,59 @@ const OrderDetails = () => {
         <div> 
           <h1>Payment</h1> 
           <p> 
-            <b>Payment Method</b> 
-            {"COD"} 
+            <b>Payment Method:</b> 
+            {"Card"} 
           </p> 
           <p> 
-            <b>Payment Reference</b>
-            #{"asdasdsadsad"} 
+            <b>Amount:</b>
+            € {Number(total * 1.18 + 4).toFixed(2)}
           </p> 
           <p> 
-            <b>Paid At</b> 
-            {"23-02-2003"} 
-          </p> 
-        </div> 
-        
-        
-        <div> 
-          <h1>Amount</h1> 
-          <p> 
-            <b>Items Total</b>
-            ₹{2132} 
+            <b>Payment Reference:</b>
+            #{id} 
           </p> 
           <p> 
-            <b>Shipping Charges</b>
-            ₹{200} 
+            <b>Paid At:</b> 
+            {date} 
           </p> 
-          <p> 
-            <b>Tax</b>
-            ₹{232} 
-          </p> 
-          <p> 
-            <b>Total Amount</b>
-            ₹{232 + 200 + 2132} 
-          </p> 
-        </div> 
-        
+        </div>        
         
         <article> 
           <h1>Ordered Items</h1>  
           <div> 
             <h4>Cheese Burger</h4> 
             <div> 
-              <span>{12}</span> x <span>{232}</span> 
+              <span>{cheeseBurger}</span> x <span>€ {Number(9).toFixed(2)}</span> 
             </div> 
           </div> 
           <div> 
             <h4>Veg Cheese Burger</h4> 
             <div> 
-              <span>{10}</span> x <span>{500}</span> 
+              <span>{vegCheeseBurger}</span> x <span>€ {Number(11).toFixed(2)}</span> 
             </div> 
           </div> 
           <div> 
             <h4>Burger Fries</h4> 
             <div> 
-              <span>{10}</span> x <span>{1800}</span> 
+              <span>{cheeseBurgerFries}</span> x <span>€ {Number(15).toFixed(2)}</span> 
+            </div> 
+          </div> 
+          <div> 
+            <h4>Sub Total</h4> 
+            <div> 
+              <span>€ {Number(total).toFixed(2)}</span> 
+            </div> 
+          </div> 
+          <div> 
+            <h4>Tax</h4> 
+            <div> 
+              <span>€ {Number(total * 0.18).toFixed(2)}</span> 
+            </div> 
+          </div> 
+          <div> 
+            <h4>Shipping Charges</h4> 
+            <div> 
+              <span>€ {Number(4).toFixed(2)}</span> 
             </div> 
           </div> 
           
@@ -107,12 +131,12 @@ const OrderDetails = () => {
                 fontWeight: 800, 
               }} 
             > 
-              Sub Total  
+              Total  
             </h4> 
             <div 
               style={{ fontWeight: 800 }}  
             > 
-              ₹{2132}  
+              € {Number(total * 1.18 + 4).toFixed(2)}  
             </div> 
           </div> 
         </article>  
